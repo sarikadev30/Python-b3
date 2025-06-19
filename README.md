@@ -437,3 +437,94 @@ if(check):
   print("Both Names are same")
 
 ```
+
+## Ternary Operator
+
+- Ternary operators also known as **conditional expressions** are operators that evaluate something based on a condition being true or false.
+- It was added to Python in version **2.5.**
+- It simply allows testing a condition in a **single line** replacing the multiline if-else making the code compact.
+- Syntax➖
+  ```
+  [on_true] if [expression] else [on_false]
+  ```
+- For ex-
+
+  ```
+  # to check whether a number is odd or even
+  a=10;
+  print("Even Number") if(a%2==0) else print("Odd Number");
+
+  x = 5
+  result = "Greater" if x > 10 else "Equal" if x == 10 else "Less"
+  print(result)
+  ```
+
+## WHILE LOOP
+
+```
+  starting_point  # called as initialization
+
+  while(till_when_he_will_jump):     # condition to terminate the loop
+
+	# operation that is to be performed
+
+	how_many_jump_at_a_time          # Increment/decrement
+```
+
+### Break
+
+- **Break** means to come out of the loop and stop the execution.
+
+### Continue
+
+- **Continue** is basically saying go back to the condition.
+
+## The else Statement with While in Python
+
+With the else statement we can run a block of code once when the condition no longer is true:
+
+```python
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+else:
+  print("i is no longer less than 6")
+```
+
+## FOR LOOP
+
+## NESTED LOOPS
+
+## DATA TYPES
+
+### 1. Primitive Data Types (also called basic or built-in types)
+
+These are the most **basic types of data**, directly supported by the Python language.
+
+| Data Type  | Description                      | Example         |
+| ---------- | -------------------------------- | --------------- |
+| `int`      | Integer numbers                  | `10`, `-5`, `0` |
+| `float`    | Decimal (floating point) numbers | `3.14`, `-0.1`  |
+| `bool`     | Boolean values (True or False)   | `True`, `False` |
+| `str`      | Text (string of characters)      | `"Hello"`       |
+| `NoneType` | Represents a null value          | `None`          |
+
+> **Note:** These are immutable (cannot be changed after creation).
+
+---
+
+### 2. Non-Primitive Data Types (also called complex or user-defined types)
+
+These are built using primitive types.
+They can store **multiple values** and offer **more functionality**.
+
+| Data Type         | Description                     | Example                 |
+| ----------------- | ------------------------------- | ----------------------- |
+| `list`            | Ordered, mutable collection     | `[1, 2, 3]`             |
+| `tuple`           | Ordered, immutable collection   | `(1, 2, 3)`             |
+| `set`             | Unordered, unique items         | `{1, 2, 3}`             |
+| `dict`            | Key-value pairs                 | `{"name": "Sam"}`       |
+| `array`           | Like lists, from `array` module | `array('i', [1, 2, 3])` |
+| `class`, `object` | Custom types defined by user    | OOP structures          |
+| `function`        | Callable object                 | `def greet(): ...`      |
