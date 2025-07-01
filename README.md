@@ -502,13 +502,12 @@ else:
 
 These are the most **basic types of data**, directly supported by the Python language.
 
-| Data Type  | Description                      | Example         |
-| ---------- | -------------------------------- | --------------- |
-| `int`      | Integer numbers                  | `10`, `-5`, `0` |
-| `float`    | Decimal (floating point) numbers | `3.14`, `-0.1`  |
-| `bool`     | Boolean values (True or False)   | `True`, `False` |
-| `str`      | Text (string of characters)      | `"Hello"`       |
-| `NoneType` | Represents a null value          | `None`          |
+| Data Type | Description                      | Example         |
+| --------- | -------------------------------- | --------------- |
+| `int`     | Integer numbers                  | `10`, `-5`, `0` |
+| `float`   | Decimal (floating point) numbers | `3.14`, `-0.1`  |
+| `bool`    | Boolean values (True or False)   | `True`, `False` |
+| `str`     | Text (string of characters)      | `"Hello"`       |
 
 > **Note:** These are immutable (cannot be changed after creation).
 
@@ -528,3 +527,284 @@ They can store **multiple values** and offer **more functionality**.
 | `array`           | Like lists, from `array` module | `array('i', [1, 2, 3])` |
 | `class`, `object` | Custom types defined by user    | OOP structures          |
 | `function`        | Callable object                 | `def greet(): ...`      |
+
+## What are Mutability and Immutability
+
+## Mutability
+
+In Python, mutability means you can directly modify an object after the creation
+. For example, a list is a mutable object. After creating a list, you can add, modify, or remove elements from it.
+
+## Immutability
+
+In Python, immutability means you cannot directly modify an object after the creation
+. For example, Tuple is an immutable object. After creating a tuple, you cannot add, modify, or remove elements from it.
+
+## Sets
+
+- Sets are used to store multiple items in a single variable.
+- Sets are declared using { } without a colon.
+- Set items are unordered (which means that the items in a set do not have a defined order), unchangeable (meaning that we cannot change the items after the set has been created), and do not allow duplicate values.
+- No fetching possible (No Indexing and Slicing)
+- We can add or delete the data.
+- Data within the sets are automatically sorted.
+- They contain only unique data. (**Data Duplication not possible**)
+- **Syntax ⇒ `{** item1,item2, item3, ... }`
+- **Example➖**
+  ```python
+  s={1,3,4,5,8}
+  print(s)           # {1, 3, 4, 5, 8}
+  print(type(s))     # <class 'set'>
+  ```
+- Since Sets consist of sorted and unique data, searching for a particular element within the set is very quick.
+
+## Tuples
+
+- Sibling of List
+- **Immutable Data Object** ➖ Once you create the tuple, you can’t manipulate it. (no addition, deletion, or replacement)
+- We can
+  - Create Tuple
+  - Indexing and Slicing
+  - Create a new tuple by merging two or more tuples.
+- A safer option for data collection
+  - **Example** ⇒ Students’ marks if stored in a list manipulation can be possible (as addition, deletion, and changes are applicable) but Tuple is **immutable** hence, safer than a list
+- When the objective is to collect the data and has no further objective of editing it ⇒ **Use TUPLE**
+
+## Dictionary
+
+- Python dictionary is an **ordered collection of items**.
+- As of Python version 3.7, dictionaries are *ordered*. In Python 3.6 and earlier, dictionaries are *unordered*.
+- Dictionaries are **optimized to retrieve values when the key is known.**
+- A dictionary is a collection that is **changeable** and **does not allow duplicates**.
+- Dictionaries are written **with curly brackets** and **have keys and values.**
+- Holds data as **`key-value`** pair
+- No concept of an index system and hence they are unordered.
+- To fetch the data we use keys.
+- A dictionary can’t have two keys with the same name. [ **keys must be unique and values can repeat**]
+- Dictionaries are mutable, so we can
+  - add a new key-value pair
+  - replace the value not a key
+  - delete a key-value pair
+- **Syntax**➖
+  ```python
+  dict={
+  	"key1": value,
+  	"key2": "value",
+  }
+  ```
+
+While the values can be of any data type and can repeat, keys must be of **immutable type (string, number, or tuple with immutable elements) and must be unique**.
+
+## Functions
+
+A block of code designed to perform a particular task; they are very useful in making code simplified and manageable.
+
+```
+  def channel_1():
+      x="Sam";
+      print(x);
+
+  channel_1()
+  channel_1()
+  channel_1()
+  channel_1()
+```
+
+### Default Arguments
+
+### Variable-Length Arguments
+
+### Keyworded Arguments => Arguments passed as name=value.
+
+## Scope of Variables
+
+### Local Scope
+
+```
+def greet():
+    message = "Hello"
+    print(message)  # message is local to this function
+
+greet()
+# print(message)  # Error: message is not defined
+```
+
+### Enclosing Scope (Nonlocal)
+
+An enclosing scope refers to the scope of a function that contains another nested function.
+Variables in this outer function are not local to the inner function, but they are not global either — they’re in the enclosing scope.
+
+To access and modify a variable from an enclosing scope inside a nested function, we use the nonlocal keyword.
+Without nonlocal, Python would treat message in inner() as a new local variable.
+
+```
+	def outer():
+    msg = "Hello"
+
+    def inner():
+        nonlocal msg
+        msg = "Hi"
+        print("Inner:", msg)
+
+    inner()
+    print("Outer:", msg)
+
+	outer()
+
+```
+
+### Global Scope
+
+```
+x = 10  # Global variable
+
+def print_x():
+    print(x)
+
+print_x()
+```
+
+If modifying global:
+
+```
+x = 5
+
+def change():
+    global x
+    x = 10
+
+change()
+print(x)  # Output: 10
+```
+
+### Built-in Scope
+
+The built-in scope contains the names of all built-in functions, exceptions, and objects provided by Python. These are always available unless shadowed.
+
+These come from the **builtins** module, and examples include:
+
+```
+  len()
+
+  type()
+
+  print()
+
+  max(), min()
+
+  sum()
+```
+
+Exception, ValueError, etc.
+
+Python looks for a variable in this order: Local → Enclosing → Global → Built-in
+print(len("Python")) # 'len' is a built-in function
+
+## Python Exception
+
+Exceptions are runtime errors that occur when a program encounters something unexpected or invalid during execution.
+Instead of crashing the program, Python allows us to handle these exceptions
+
+```
+  print(10 / 0)
+```
+
+### Why Exceptions Happen ?
+
+- File not found
+- Invalid input
+- Dividing by zero
+- Accessing an index that doesn’t exist
+- Working with wrong data types
+
+### Benefits of Using Exceptions:
+
+- Prevents program from crashing
+- Improves user experience with meaningful error messages
+- Helps in debugging
+
+### try-except block
+
+Used to catch and handle exceptions that occur in a block of code to prevent program crash.
+
+```
+  try:
+    a = 10 / 0
+  except ZeroDivisionError:
+    print("Cannot divide by zero!")
+
+```
+
+### Multiple except blocks
+
+To handle different types of exceptions separately with custom responses.
+
+```
+try:
+    num = int("abc")
+except ValueError:
+    print("Invalid conversion to int")
+except ZeroDivisionError:
+    print("Zero division")
+```
+
+### Catching multiple exceptions together
+
+To catch multiple related exceptions using a single except clause.
+
+```
+try:
+    # Some code
+    pass
+except (ValueError, ZeroDivisionError) as e:
+    print("Caught exception:", e)
+```
+
+### Generic exception handling
+
+Catch any kind of exception, useful when the exact exception type is unknown.
+
+```
+try:
+    x = 10 / 0
+except Exception as e:
+    print("Error occurred:", e)
+```
+
+### finally block
+
+Code in finally always runs — whether or not an exception occurs.
+
+```
+try:
+    f = open("sample.txt")
+except FileNotFoundError:
+    print("File not found.")
+finally:
+    print("This block always runs.")
+```
+
+### Raising exceptions
+
+To manually trigger an exception when a specific condition is violated.
+
+```
+  def divide(a, b):
+      if b == 0:
+          raise ValueError("b cannot be zero")
+      return a / b
+
+  divide(10, 0)
+```
+
+### User-defined exceptions
+
+```
+class NegativeAgeError(Exception):
+    pass
+
+age = -2
+if age < 0:
+    raise NegativeAgeError("Age cannot be negative")
+```
+
