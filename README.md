@@ -808,3 +808,44 @@ if age < 0:
     raise NegativeAgeError("Age cannot be negative")
 ```
 
+## File Handling
+
+### Files
+
+- Files are a way to store data permanently on your computer.
+- Python can open files, read their contents, write new information, and close them when done.
+- Files can be text-based (like `.txt`), or more structured formats like `.csv`.
+
+**Key Concepts:**
+
+- **Opening a file:**
+  Before reading or writing, we must open a file.
+- **Closing a file:**
+  After finishing with file operations, we close it, so the system knows we’re done and all changes are saved.
+- **File Modes:**
+  Determine how we interact with the file (read-only, write-new, append, etc.)
+
+---
+
+### Need of Files
+
+If you need to store large amounts of data, user preferences, or logs, relying on variables isn’t enough. Files let you:
+
+- Preserve data after the program ends.
+- Share data between different runs of your program.
+- Process bigger data sets that you can’t hard-code into variables.
+
+```
+  file = open("data.txt", "r")  # opens data.txt in read mode
+  print(file)
+
+
+  file.close()  # close the file after finishing
+```
+
+```
+  with open("data.txt", "r") as f:
+    content = f.read()
+    print(content)
+  # File is automatically closed after the with-block ends
+```
