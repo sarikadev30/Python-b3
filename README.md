@@ -849,3 +849,102 @@ If you need to store large amounts of data, user preferences, or logs, relying o
     print(content)
   # File is automatically closed after the with-block ends
 ```
+
+## Locating Modules in Python
+
+When you import a module in Python using import module_name, Python looks for that module in a sequence of directories. This sequence is stored in the list sys.path.
+
+### What is sys.path?
+
+sys.path is a list of directory paths that Python interpreter searches through when trying to locate a module you want to import.
+
+It is defined in the sys module, so you must import sys to access it.
+
+Python follows this order:
+
+- Looks in the current directory ('')
+
+- Then in site-packages (user or system installed)
+
+- Then in standard library paths
+
+- If not found, it raises a ModuleNotFoundError
+
+### Adding Custom Paths
+
+You can also manually add paths to sys.path at runtime:
+
+```
+import sys
+sys.path.append('/my/custom/module/path')
+import mymodule
+```
+
+This is useful if:
+
+- You have a shared module in a separate directory.
+- You want to avoid moving files around.
+
+## What is `pickle` in Python?
+
+Imagine you have a Python object (like a list, dictionary, or even a custom class), and you want to **save it to a file** so that you can **use it later** — maybe even after restarting your program or computer.
+
+That's where the `pickle` module comes in.
+
+## Why Use Pickle?
+
+- To **store data permanently** (like saving app state, ML models, game progress, etc.)
+- To **transfer Python data** between different scripts or machines
+
+---
+
+## 🔧 Two Main Functions
+
+| Function        | Purpose                                |
+| --------------- | -------------------------------------- |
+| `pickle.dump()` | Save (serialize) Python object to file |
+| `pickle.load()` | Load (deserialize) object from file    |
+
+## Python Packages
+
+A package is a directory containing a special **init**.py file (can be empty) and multiple modules. Packages help organize modules in a hierarchical way.
+
+Structure Example:
+
+```
+  mypackage/
+├── **init**.py
+├── math_utils.py
+└── string_utils.py
+```
+
+Use Case: Encapsulate related modules for better structure and reuse.
+
+### **init**.py
+
+is a special Python file used to indicate that a directory is a Python package.
+
+- Without it (in Python versions < 3.3), the directory wouldn’t be recognized as a package.
+
+- In modern Python (≥ 3.3), it’s optional, but still widely used for:
+
+  - Package initialization
+
+  - Controlling what gets imported
+
+  - Organizing internal logic
+
+```
+  # math_utils.py
+def square(n):
+    return n * n
+
+# string_utils.py
+def reverse(s):
+    return s[::-1]
+
+# main.py
+from mypackage import math_utils, string_utils
+print(math_utils.square(4))
+print(string_utils.reverse("hello"))
+```
