@@ -948,3 +948,222 @@ from mypackage import math_utils, string_utils
 print(math_utils.square(4))
 print(string_utils.reverse("hello"))
 ```
+
+## COLLECTION MODULE
+
+The `collections` module provides alternatives to built-in containers like `dict`, `list`, `set`, and `tuple`. These are:
+
+1. **Counter**
+2. **deque**
+3. **defaultdict**
+4. **namedtuple**
+
+## TIME MODULE
+
+- Definition : The `time` module provides functions to work with time-related tasks such as delays, measuring execution time, and formatting time and dates.
+- **Use Cases:**
+  - Add delays in programs (e.g., games, loaders)
+  - Benchmark how long code takes to run
+  - Format and display current time
+- **Commonly Used Functions**
+  | Function | Description |
+  | -------------------------- | -------------------------------------------------- |
+  | `time.time()` | Returns current time in seconds since epoch |
+  | `time.sleep(seconds)` | Suspends execution for the given number of seconds |
+  | `time.ctime([secs])` | Converts time in seconds to a readable string |
+  | `time.localtime([secs])` | Converts time to local time struct |
+  | `time.strftime(format, t)` | Formats a struct_time as a string |
+  | `time.perf_counter()` | High-resolution performance timer |
+- **Epoch** in Python (and Computers)
+  The **Epoch** is a fixed point in time used as a reference for measuring time in computing.
+  In most systems (including Python), **Epoch time** is:
+  > January 1, 1970, at 00:00:00 UTC
+  > This is also known as **Unix Time** or **POSIX Time**.
+- Difference between localtime() and ctime()
+  | Feature | `time.localtime()` | `time.ctime()` |
+  | ---------------------- | -------------------------------------- | ------------------------------- |
+  | **Returns** | `time.struct_time` (tuple-like object) | String |
+  | **Readable?** | No (raw object) | Yes (formatted time string) |
+  | **Can extract parts?** | Yes (year, hour, etc.) | No (need parsing) |
+  | **Use Case** | When you want to **manipulate time** | When you want to **print time** |
+
+## DATE TIME MODULE
+
+The `datetime` module provides classes to **work with dates and times** in both simple and complex ways. It is part of Python’s standard library.
+
+---
+
+## REGEX MODULE
+
+### **Core Functions of `re` Module**
+
+| Function       | Description                            |
+| -------------- | -------------------------------------- |
+| `re.search()`  | Searches for the first match           |
+| `re.findall()` | Returns a list of all matches          |
+| `re.match()`   | Checks for a match at the **start**    |
+| `re.sub()`     | Replaces pattern with something else   |
+| `re.compile()` | Compiles a pattern into a regex object |
+
+---
+
+## **Basic Regex Patterns (Metacharacters)**
+
+| Pattern | Meaning                            | Example Match                                  |
+| ------- | ---------------------------------- | ---------------------------------------------- |
+| `.`     | Any character except newline       | `"c.t"` → `cat`, `cut`                         |
+| `^`     | Start of string                    | `"^Hi"` matches `Hi`                           |
+| `$`     | End of string                      | `"bye$"` matches `goodbye`                     |
+| `*`     | 0 or more repeats                  | `"go*gle"` matches `ggle`, `google`, `gooogle` |
+| `+`     | 1 or more repeats                  | `"lo+l"` → `lol`, `lool`                       |
+| `?`     | 0 or 1 repeat                      | `"colou?r"` matches `color`, `colour`          |
+| `{n}`   | Exactly n times                    | `"a{3}"` → `aaa`                               |
+| `{n,m}` | Between n and m times              | `"a{2,4}"` → `aa`, `aaa`, `aaaa`               |
+| `[]`    | Matches a set of characters        | `"[aeiou]"`                                    |
+| `\d`    | Digit (0–9)                        | `"a\d"` → `a2`                                 |
+| `\D`    | Non-digit                          | `"\D"` matches `a`, `!`                        |
+| `\w`    | Word character (a-z, A-Z, 0–9, \_) |                                                |
+| `\s`    | Whitespace                         | `"Hello\sWorld"`                               |
+| `       | `                                  | OR                                             |
+| `()`    | Grouping                           | `"(ha)+"` → `ha`, `hahaha`                     |
+
+---
+
+## Python Threads
+
+threading module allows you to run multiple threads (tasks) at once.
+
+### Methods:
+
+start(): Starts the thread.
+
+run(): Defines the task to run.
+
+join(): Waits for the thread to finish.
+
+### Lock
+
+Prevents multiple threads from modifying shared data simultaneously.
+
+### Daemon Thread
+
+Background thread that automatically exits when the main thread finishes.
+
+### Timer
+
+Delays execution of a function by a certain amount of time.
+
+### GIL (Global Interpreter Lock)
+
+Ensures only one thread executes Python bytecode at a time.
+
+```
+def task():
+    print("Running")
+
+t = threading.Thread(target=task)
+t.start()
+t.join()  # tells the main program to wait for thread t to finish before moving on.
+
+```
+
+## Python Queue
+
+Used for thread-safe task queues.
+
+### Types:
+
+Queue() – FIFO (First-In, First-Out)
+
+LifoQueue() – Last-In, First-Out
+
+PriorityQueue() – Elements sorted by priority
+
+### Methods:
+
+put(): Add item.
+
+get(): Remove item.
+
+empty(): Check if empty.
+
+task_done(): Signal task completion.
+
+join(): Block until all tasks are done.
+
+```
+from queue import Queue
+
+q = Queue()
+q.put("A")
+print(q.get())
+
+```
+
+## OS Interface
+
+Interacts with the operating system.
+
+Common Methods:
+
+os.rename(src, dst) – Rename file or folder.
+
+os.listdir(path) – List directory contents.
+
+os.remove(path) – Delete file.
+
+os.getcwd() – Get current directory.
+
+os.chdir(path) – Change directory.
+
+os.stat(path) – Get file info.
+
+os.path.isdir() – Check if path is directory.
+
+os.mkdir() – Make directory.
+
+os.makedirs() – Make nested directories.
+
+os.access(path, mode) – Check permission.
+
+os.walk(path) – Generator for traversing directory trees.
+
+os.system(cmd) – Execute system command.
+
+os.popen(cmd) – Run command and get output.
+
+os.environ – Access environment variables.
+
+```
+import os
+print(os.getcwd())
+os.system("echo Hello")
+```
+
+## Python Logging
+
+Used to log events and errors.
+
+### Levels:
+
+**DEBUG:** Detailed info for diagnosis.
+
+**INFO:** Confirmation that things are working.
+
+**WARNING:** Something unexpected.
+
+**ERROR:** Problem preventing function.
+
+**CRITICAL:** Serious error.
+
+```
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logging.info("Information")
+logging.error("An error occurred")
+```
+
+---
+
+Happy Coding!........

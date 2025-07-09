@@ -81,6 +81,6 @@ words = ["apple", "banana", "apricot", "cherry", "avocado"]
 
 # print(reduce(lambda x, y: x * y, a))
 # ..........................................................................
-import sys
+# import sys
 
-print(sys.path)
+# print(sys.path)
